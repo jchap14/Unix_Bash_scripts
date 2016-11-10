@@ -1,0 +1,10 @@
+### homerTools: Extracting Genomic Sequences From FASTA Files
+#usage: bash homerTools-extract.sh <$bed file for extraction>
+
+module add homer
+
+name=`basename $1 .bed`
+
+#examp: homerTools extract peaks.bed /home/chucknorris/homer/data/genomes/mm9/ -fa > outputSequence.fa
+homerTools extract $1 /home/jchap14/hi_quota_folder/Annotations/GENCODE-v19-GRCh37-hg19/GRCh37.p13.genome.fa \
+-fa > $name.fa 
