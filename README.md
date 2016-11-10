@@ -1,1 +1,1 @@
-# batch_rename_files_UNIX
+These are short scripts used often in text processing and filtering in Unix Bash
