@@ -1,0 +1,33 @@
+###### one-liner bash commands to batch rename a list of files
+## only works w double quotes ""
+
+
+### change names of fastq from SCG to match STAR_RSEM_ENCODE.sh requirement
+for file in *_R1.fastq.gz; do mv -i "${file}" "${file/_R1.fastq.gz/.1.fastq.gz}"; done
+for file in *_R2.fastq.gz; do mv -i "${file}" "${file/_R2.fastq.gz/.2.fastq.gz}"; done
+
+### change trimmed filenames to shorter version
+for file in *.1_val_1.fq.gz; do mv -i "${file}" "${file/.1_val_1.fq.gz/.1.trimmed.fq.gz}"; done
+for file in *.2_val_2.fq.gz; do mv -i "${file}" "${file/.2_val_2.fq.gz/.2.trimmed.fq.gz}"; done
+
+### change .fasta to .fa
+for file in *.fasta; do mv -i "${file}" "${file/.fasta/.fa}"; done
+
+### remove SCGPM* prefix to shorten filenames & shorten .fastq to .fq
+for file in SCGPM*; do mv -i "${file}" "${file/SCGPM_R1_AP4BR_L1_/}"; done
+for file in *fastq*; do mv -i "${file}" "${file/fastq/fq}"; done
+for file in *.fq.gz; do mv -i "${file}" "${file/_R/.R}"; done
+
+### remove $TEXT to shorten filenames
+for file in *.bedGraph.bw; do mv -i "${file}" "${file/.bedGraph.bw/.bw}"; done
+
+### change Lam_vs_Static to LSS_vs_ST
+for file in Lam_vs_Static*; do mv -i "${file}" "${file/Lam_vs_Static/LSS_vs_ST}"; done
+
+### shorten signal track names
+for file in *.signal.bigwig; do mv -i "${file}" "${file/.1.trim.PE2SE.nodup.tn5.pf/}"; done
+for file in *.signal.bigwig; do mv -i "${file}" "${file/.bigwig/.bw}"; done
+
+
+### TMP
+for file in *.peaks.narrowPeak; do mv -i "${file}" "${file/.peaks.narrowPeak/.narrowPeak}"; done
