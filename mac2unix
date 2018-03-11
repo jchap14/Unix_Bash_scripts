@@ -1,0 +1,3 @@
+echo "converting $1 to unix line endings"
+cat $1 | tr '\r' '\n' > a.txt
+mv a.txt $1

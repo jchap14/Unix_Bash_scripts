@@ -1,0 +1,76 @@
+########### .profile for Stanford scg3 account
+alias ls='ls -l -h -o -p -t --color=auto'
+alias cl='clear'
+module add bowtie
+module add boost
+module add bedtools
+module add fastqc
+module add fastx_toolkit
+module add java
+module add picard-tools
+module add r
+module add samtools
+module add STAR
+module add zlib
+module add rsem
+module add ngsplot
+module add igvtools
+module add igv
+module add trim_galore
+module add sratoolkit
+module add rseqc
+module add bedops
+module add ucsc_tools
+module add cufflinks
+
+########### .bash_profile for laptop
+UGA cluster:
+ ssh jchap14@zcluster.rcc.uga.edu
+b0ll0cks
+ 
+to change to UNIX lf from MAC use 'perl -p -e 's/\r/\n/g'  < a.txt > b.txt'
+# of columns in a file is awk '{if( NF > max ) max = NF} END {print max}'
+ 
+to delete all queued jobs use 'qstat | tail -n+3 | awk '{ print $1 }' | xargs -n1 qdel'
+ 
+Stanford cluster:
+ ssh jchap14@scg3.stanford.edu 
+ 
+rm `find . -size 0` #to remove empty files
+ 
+qsub -V -cwd -l h_vmem=4G -pe shm 12 -j y ./script.sh
+ 
+qstat -f -j JOBID |grep vmem to check memory usage while a job running
+ 
+cajeput:Desktop jchap12$ cd
+cajeput:~ jchap12$ cat .bash_profile 
+#export PATH="/Users/jameschappell/Library/Application\ Support/GoodSync":$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+alias ls='ls -lhGopt'
+alias ss='ssh jchap14@scg3.stanford.edu'
+alias cl='clear'
+alias m2u='mac2unix'
+
+echo "UGA cluster:"
+echo " ssh jchap14@zcluster.rcc.uga.edu"
+echo "b0ll0cks"
+echo " "
+echo "to change to UNIX lf from MAC use 'perl -p -e 's/\r/\n/g'  < a.txt > b.txt'"
+echo "# of columns in a file is awk '{if( NF > max ) max = NF} END {print max}'"
+echo " "
+echo "to delete all queued jobs use 'qstat | tail -n+3 | awk '{ print \$1 }' | xargs -n1 qdel'"
+echo " "
+echo "Stanford cluster:"
+echo " ssh jchap14@scg3.stanford.edu "
+echo " "
+echo "rm \`find . -size 0\` #to remove empty files"
+echo " "
+echo 'qsub -V -cwd -l h_vmem=4G -pe shm 12 -j y ./script.sh'
+echo " "
+echo 'qstat -f -j JOBID |grep vmem to check memory usage while a job running'
+echo " "
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
